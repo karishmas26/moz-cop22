@@ -130,18 +130,18 @@ ggplot() +
   theme(strip.text = element_text(family = "Source Sans Pro SemiBold"))
 
 
-df_dp %>% 
-  filter(numeratordenom == "N",
-         indicator == "OVC_SERV") %>% 
-  group_by(fiscal_year, indicator, standardizeddisaggregate, otherdisaggregate) %>% 
-  summarise(across(c(targets), sum, na.rm = TRUE), .groups = "drop") %>% 
-  pivot_wider(names_from = fiscal_year, values_from = targets) %>% 
-  rename(FY22_target = `2022`,
-         FY23_target = `2023`) %>% 
-  select(-c(`2021`)) %>% 
-  mutate(indicator = recode(indicator, "PREP_CURR" = "PrEP_CURR",
-                            "PREP_NEW" = "PrEP_NEW",
-                            "PREP_CT" = "PrEP_CT"))
+# df_dp %>% 
+#   filter(numeratordenom == "N",
+#          indicator == "OVC_SERV") %>% 
+#   group_by(fiscal_year, indicator, standardizeddisaggregate, otherdisaggregate) %>% 
+#   summarise(across(c(targets), sum, na.rm = TRUE), .groups = "drop") %>% 
+#   pivot_wider(names_from = fiscal_year, values_from = targets) %>% 
+#   rename(FY22_target = `2022`,
+#          FY23_target = `2023`) %>% 
+#   select(-c(`2021`)) %>% 
+#   mutate(indicator = recode(indicator, "PREP_CURR" = "PrEP_CURR",
+#                             "PREP_NEW" = "PrEP_NEW",
+#                             "PREP_CT" = "PrEP_CT"))
 
 
 
